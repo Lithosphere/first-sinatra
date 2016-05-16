@@ -1,10 +1,28 @@
+
+
 <p>
 Author: <%= @message.author %>
 </p>
-
+<p>
+Funny link: <a href ="http://<%= @message.url %>">funny link</a>
 <p>
 <%= @message.content %>
 </p>
+<p>
+<%= @message.created_at %>
+</p>
+
+<% @messages = Message.where(author: @message.author) %>
+
+<p>
+Other posts by this author:
+</p>
+<% @messages.each do |m| %>
+<p>
+<%= m.content %>
+</p>
+<% end %>
+
 
 <hr/>
 <a href="/messages">Back to all messages</a>

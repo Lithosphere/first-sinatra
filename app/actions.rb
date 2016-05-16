@@ -15,9 +15,10 @@ end
 
 post '/messages' do
   @message = Message.new(
-    title: params[:title],
+    url: params[:url],
     content: params[:content],
-    author: params[:author]
+    author: params[:author],
+    created_at: params[:created_at]
     )
   if @message.save
   redirect '/messages'
